@@ -1,0 +1,6 @@
+*.exe
+*.o
+sim
+tests
+*.csv
+*.png
