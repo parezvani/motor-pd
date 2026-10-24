@@ -20,20 +20,23 @@ int main(void) {
     CHECK("motor: positive torque moves it forward", m.velocity > 0);
 
 
-    // TODO rule 1: target ahead of the motor -> torque is positive
+    //rule 1: target ahead of the motor -> torque is positive
     pd_t p;
     pd_init(&p, 2, 0.1, 1);
     pd_set_target(&p, 1);
     float torque = pd_update(&p, 0, 0);
-    CHECK("torque: target ahead of the motor means torque is positive", torque > 0);
+    CHECK("positive torque: target ahead of the motor so torque is positive", torque > 0);
     
 
-    // TODO rule 2: target behind the motor -> torque is negative
+    //rule 2: target behind the motor -> torque is negative
+    pd_set_target(&p, 0);
+    torque = pd_update(&p, 1, 0);
+    CHECK("negative torque: target behind the motor so torque is negative", torque < 0);
     
 
-    // TODO rule 3: huge error -> torque never goes past max_torque
+    //rule 3: huge error -> torque never goes past max_torque
 
-    // TODO rule 4: at the target and not moving -> torque is 0
+    //rule 4: at the target and not moving -> torque is 0
 
     printf("\n%d passed, %d failed\n", passed, failed);
     return failed != 0;
