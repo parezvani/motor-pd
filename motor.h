@@ -9,7 +9,7 @@ typedef struct{
     float velocity; /*rad/s*/
 }motor_t;
 
-void motor_init (motor_t *motor, float inertia, float friction);
+void motor_init (motor_t *motor, float inertia, float friction); //
 void motor_step (motor_t *motor, float torque, float dt);
 
 #endif
