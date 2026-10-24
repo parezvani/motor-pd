@@ -35,6 +35,9 @@ int main(void) {
     
 
     //rule 3: huge error -> torque never goes past max_torque
+    pd_set_target(&p, 3);
+    torque = pd_update(&p, 20, 0);
+    CHECK("clamp: torque never goes past the limit", -1 <= torque && torque <= 1);
 
     //rule 4: at the target and not moving -> torque is 0
 
