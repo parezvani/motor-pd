@@ -20,3 +20,7 @@ float pd_update(pd_t *pd, float angle, float velocity){
     }
     return torque;
 }
+
+void pd_set_target(pd_t *pd, float target){
+    pd->setpoint = target;
+}

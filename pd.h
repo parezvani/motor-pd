@@ -10,5 +10,6 @@ typedef struct{
 
 void pd_init(pd_t *pd, float new_kp, float new_kd, float new_max);
 float pd_update(pd_t *pd, float angle, float velocity); // returns torque
+void pd_set_target(pd_t *pd, float target);
 
 #endif
