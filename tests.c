@@ -40,6 +40,12 @@ int main(void) {
     CHECK("clamp: torque never goes past the limit", -1 <= torque && torque <= 1);
 
     //rule 4: at the target and not moving -> torque is 0
+    pd_set_target(&p, 1);
+    torque = pd_update(&p, 1, 0);
+    CHECK("at target and still: torque is 0", torque == 0);
+
+
+
 
     printf("\n%d passed, %d failed\n", passed, failed);
     return failed != 0;
